@@ -1,11 +1,13 @@
 import { Image, Text, Button, Title, MediaQuery } from "@mantine/core";
 import { LightSwitchAtom } from "common/atom/LightSwitch";
+import { TurnOffLightAtom } from "common/atom/TurnOffLight";
 import { WebcamSwitchAtom } from "common/atom/WebcamSwitch";
 import { useAtom } from "jotai";
 import { useStyles } from "./styles";
 export default function FirstParagraph() {
   const { classes } = useStyles();
 
+  const [turnOffLight, setTurnOffLight] = useAtom(TurnOffLightAtom);
   const [lightSwitch, setLightSwitch] = useAtom(LightSwitchAtom);
   const [webcamSwitch, setWebcamSwitch] = useAtom(WebcamSwitchAtom);
   const handleLightSwitch = () => {
@@ -36,7 +38,13 @@ export default function FirstParagraph() {
         onClick={handleLightSwitch}
         disabled={!lightSwitch.status}
       >
-        <Text>{lightSwitch.status ? "Turn Light On" : "Turn Light Off"}</Text>
+        <Text>
+          {lightSwitch.status
+            ? "Turn Light On"
+            : turnOffLight.status
+            ? "Light Off"
+            : "Loading..."}
+        </Text>
       </Button>
       <Button className={classes.ButtonStyle} onClick={handleWebcamSwitch}>
         <Text>{webcamSwitch.status ? "Hide Webcam" : "Show Webcam"}</Text>

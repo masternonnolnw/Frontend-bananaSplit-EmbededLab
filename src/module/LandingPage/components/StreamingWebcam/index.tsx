@@ -13,7 +13,7 @@ const StreamingWebcam = () => {
       style={{
         display: webcamSwitch.status ? "block" : "none",
         margin: "30px auto",
-        maxWidth: "550px",
+        maxWidth: "289px",
         maxHeight: "300px"
       }}
     />

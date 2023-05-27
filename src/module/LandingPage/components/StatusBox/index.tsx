@@ -3,6 +3,9 @@ import { Image, Text } from "@mantine/core";
 import { SleepingStatusAtom } from "common/atom/SleepingStatus";
 import { useAtom } from "jotai";
 import { useEffect, useState } from "react";
+import { CatModeAtom } from "common/atom/CatMode";
+import { motion } from "framer-motion";
+
 export default function FirstParagraph() {
   const { classes } = useStyles();
   const [sleepingStatus, setSleepingStatus] = useAtom(SleepingStatusAtom);
@@ -10,9 +13,14 @@ export default function FirstParagraph() {
     setSleepingStatus({ status: !sleepingStatus.status });
   };
   const [date, setDate] = useState(new Date());
-
   const [timeShow, setTimeShow] = useState("");
-
+  const [catMode, setCatMode] = useAtom(CatModeAtom);
+  const variants = {
+    cat: { opacity: 100 },
+    normal: {
+      opacity: 0
+    }
+  };
   useEffect(() => {
     const time = date.toLocaleTimeString();
     if (time) setTimeShow(time);
@@ -45,10 +53,33 @@ export default function FirstParagraph() {
           maxWidth: "90%"
         }}
       >
+        <motion.div
+          variants={variants}
+          animate={catMode.status ? "cat" : "normal"}
+          transition={{
+            duration: 0.1
+          }}
+          style={{
+            position: "absolute",
+            zIndex: 1,
+            left: "50%",
+            transform: "translate(-50%, 0)",
+            backgroundColor: "white"
+          }}
+        >
+          <Image
+            src={
+              sleepingStatus.status ? "/cat-sleeping.gif" : "/capoo-bug-cat.gif"
+            }
+            alt="status"
+            width="auto"
+            height={118}
+          />
+        </motion.div>
         <Image
-          src={sleepingStatus.status ? "/moon.png" : "/sun.png"}
+          src={sleepingStatus.status ? "/moon.gif" : "/sun.gif"}
           alt="status"
-          width={118}
+          width="auto"
           height={118}
         />
       </div>

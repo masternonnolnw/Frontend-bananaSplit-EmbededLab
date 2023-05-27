@@ -7,5 +7,12 @@ export const useStyles = createStyles((theme) => ({
   TimeCount: {
     textAlign: "center",
     textDecoration: "underline"
+  },
+  Fade: {
+    display: "flex",
+    zIndex: 3,
+    width: "118px",
+    height: "118px",
+    background: "#FFFFFF"
   }
 }));
