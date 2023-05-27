@@ -1,5 +1,6 @@
 import ButtonSet from "./components/ButtonSet";
 import StatusBox from "./components/StatusBox";
+import StreamingWebcam from "./components/StreamingWebcam";
 import TitleName from "./components/TitleName";
 
 export default function LandingPage() {
@@ -7,18 +8,27 @@ export default function LandingPage() {
     <div
       style={{
         display: "flex",
-        height: "100vh",
+        height: "auto",
         width: "100%",
         flexDirection: "column",
-        justifyContent: "center",
+        // justifyContent: "center",
         alignItems: "center",
-        overflow: "hidden"
+        paddingTop: "150px",
+        maxWidth: "100%"
       }}
     >
-      <div>
+      <div
+        style={{
+          width: "100%",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center"
+        }}
+      >
         <TitleName />
         <StatusBox />
         <ButtonSet />
+        <StreamingWebcam />
       </div>
     </div>
   );

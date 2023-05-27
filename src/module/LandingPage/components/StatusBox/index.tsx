@@ -40,10 +40,16 @@ export default function FirstParagraph() {
         marginBottom: "20px"
       }}
     >
-      <div style={{ maxWidth: "250px", maxHeight: "250px" }}>
+      <div
+        style={{
+          maxWidth: "90%"
+        }}
+      >
         <Image
           src={sleepingStatus.status ? "/moon.png" : "/sun.png"}
           alt="status"
+          width={118}
+          height={118}
         />
       </div>
       <div>

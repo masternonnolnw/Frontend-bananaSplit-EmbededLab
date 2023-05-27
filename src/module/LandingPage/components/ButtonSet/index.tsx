@@ -25,7 +25,10 @@ export default function FirstParagraph() {
         alignItems: "center",
         flexDirection: "column",
         marginTop: "30px",
-        marginBottom: "30px"
+        marginBottom: "30px",
+        width: "90%",
+        maxWidth: "289px",
+        margin: "0px auto"
       }}
     >
       <Button
@@ -36,7 +39,7 @@ export default function FirstParagraph() {
         <Text>{lightSwitch.status ? "Turn Light On" : "Turn Light Off"}</Text>
       </Button>
       <Button className={classes.ButtonStyle} onClick={handleWebcamSwitch}>
-        <Text>{webcamSwitch.status ? "Show Webcam" : "Hide Webcam"}</Text>
+        <Text>{webcamSwitch.status ? "Hide Webcam" : "Show Webcam"}</Text>
       </Button>
     </div>
   );

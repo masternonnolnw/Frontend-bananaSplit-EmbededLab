@@ -3,4 +3,4 @@ export interface SleepingStatusData {
   status: boolean;
 }
 
-export const SleepingStatusAtom = atom<SleepingStatusData>({ status: false });
+export const SleepingStatusAtom = atom<SleepingStatusData>({ status: true });

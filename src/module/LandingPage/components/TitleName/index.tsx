@@ -8,7 +8,9 @@ export default function FirstParagraph() {
         display: "flex",
         justifyContent: "center",
         marginTop: "20px",
-        marginBottom: "20px"
+        marginBottom: "20px",
+        maxWidth: "90%",
+        margin: "0px auto"
       }}
     >
       <Text className={classes.TitleName}>BananaSplit</Text>

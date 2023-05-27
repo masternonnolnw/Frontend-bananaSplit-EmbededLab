@@ -3,4 +3,4 @@ export interface WebcamSwitchData {
   status: boolean;
 }
 
-export const WebcamSwitchAtom = atom<WebcamSwitchData>({ status: true });
+export const WebcamSwitchAtom = atom<WebcamSwitchData>({ status: false });
