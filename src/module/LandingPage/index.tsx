@@ -27,11 +27,15 @@ export default function LandingPage() {
         const resSleep = await axios.get(`${baseApiURL}/is_sleeping`, {
           withCredentials: true
         });
+
+        // console.log(resLight.data);
+        // console.log(resSleep.data);
+
         if (resSleep.data.value == 1) setSleepingStatus({ status: true });
         else {
           setSleepingStatus({ status: false });
         }
-        if (resLight.data == 1) setLightSwitch({ status: true });
+        if (resLight.data.value == 1) setLightSwitch({ status: true });
         else {
           setLightSwitch({ status: false });
           setTurnOffLight({ status: true });

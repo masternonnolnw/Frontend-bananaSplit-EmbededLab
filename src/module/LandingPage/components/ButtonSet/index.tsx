@@ -15,6 +15,7 @@ export default function FirstParagraph() {
   const handleLightSwitch = async () => {
     try {
       setLightSwitch({ status: false });
+      setTurnOffLight({ status: true });
       const res = await axios.get(`${baseApiURL}/click`, {
         withCredentials: true
       });
