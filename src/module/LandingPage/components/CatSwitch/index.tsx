@@ -18,8 +18,14 @@ export default function FirstParagraph() {
   const [meowAngry, setMeowAngry] = useState<any>(null);
 
   useEffect(() => {
-    setMeowSound(new Audio("/Sound/meow.mp3"));
-    setMeowAngry(new Audio("/Sound/meow-angry.mp3"));
+    const newMeowSound = new Audio("/Sound/meow.mp3");
+    const newMeowAngry = new Audio("/Sound/meow-angry.mp3");
+
+    newMeowSound.volume = 0.2;
+    newMeowAngry.volume = 0.05;
+
+    setMeowSound(newMeowSound);
+    setMeowAngry(newMeowAngry);
   }, []);
 
   const variants = {

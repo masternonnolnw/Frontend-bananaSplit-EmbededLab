@@ -13,12 +13,16 @@ export default function FirstParagraph() {
   const [lightSwitch, setLightSwitch] = useAtom(LightSwitchAtom);
   const [webcamSwitch, setWebcamSwitch] = useAtom(WebcamSwitchAtom);
   const handleLightSwitch = async () => {
-    setLightSwitch({ status: false });
-    const res = await axios.get(`${baseApiURL}/click`, {
-      withCredentials: true
-    });
-    console.log(res.data);
-    setTurnOffLight({ status: true });
+    try {
+      setLightSwitch({ status: false });
+      const res = await axios.get(`${baseApiURL}/click`, {
+        withCredentials: true
+      });
+      console.log(res.data);
+      setTurnOffLight({ status: true });
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   const handleWebcamSwitch = () => {
@@ -37,7 +41,8 @@ export default function FirstParagraph() {
         marginBottom: "30px",
         width: "90%",
         maxWidth: "289px",
-        margin: "0px auto"
+        margin: "0px auto",
+        zIndex: 1
       }}
     >
       <Button
