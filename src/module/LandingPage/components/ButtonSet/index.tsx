@@ -1,7 +1,9 @@
 import { Image, Text, Button, Title, MediaQuery } from "@mantine/core";
+import axios from "axios";
 import { LightSwitchAtom } from "common/atom/LightSwitch";
 import { TurnOffLightAtom } from "common/atom/TurnOffLight";
 import { WebcamSwitchAtom } from "common/atom/WebcamSwitch";
+import { baseApiURL } from "common/const";
 import { useAtom } from "jotai";
 import { useStyles } from "./styles";
 export default function FirstParagraph() {
@@ -10,8 +12,13 @@ export default function FirstParagraph() {
   const [turnOffLight, setTurnOffLight] = useAtom(TurnOffLightAtom);
   const [lightSwitch, setLightSwitch] = useAtom(LightSwitchAtom);
   const [webcamSwitch, setWebcamSwitch] = useAtom(WebcamSwitchAtom);
-  const handleLightSwitch = () => {
+  const handleLightSwitch = async () => {
     setLightSwitch({ status: false });
+    const res = await axios.get(`${baseApiURL}/click`, {
+      withCredentials: true
+    });
+    console.log(res.data);
+    setTurnOffLight({ status: true });
   };
 
   const handleWebcamSwitch = () => {
@@ -40,7 +47,7 @@ export default function FirstParagraph() {
       >
         <Text>
           {lightSwitch.status
-            ? "Turn Light On"
+            ? "Turn Light Off"
             : turnOffLight.status
             ? "Light Off"
             : "Loading..."}
